@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions" }
   get 'profile', to: 'users#profile'   
   resources :users
-
+  root to: 'users#home'
+  get '/buyer_dashboard' => 'buyers#home'
+  get '/supplier_dashboard' => 'suppliers#home'
 end
 
 
@@ -31,3 +33,4 @@ end
 #                          PATCH  /users/:id(.:format)           users#update
 #                          PUT    /users/:id(.:format)           users#update
 #                          DELETE /users/:id(.:format)           users#destroy
+#                     root GET    /                              users#home
