@@ -22,4 +22,8 @@ before_filter :configure_sign_in_params, only: [:create]
   def configure_sign_in_params
     devise_parameter_sanitizer.for(:sign_in) << :attribute
   end
+
+  def after_sign_out_path_for(resource_or_scope)
+    '/users/sign_in'
+  end
 end

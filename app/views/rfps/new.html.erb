@@ -1,0 +1,21 @@
+<h2>Create new RFP</h2>
+
+<%= form_for(@rfp) do |f| %>
+
+	<div class="col-md-5 inline floatnone valign-t">
+	    <div class="field">
+		    <%= f.label :title %><br>
+		    <%= f.text_field :title %>
+		</div>
+	    <div class="field">
+		    <%= f.label :description %><br>
+		    <%= f.text_area :description %>
+	    </div>
+	    <div class="field">
+		    <%= f.label :category %><br>
+		    <%= f.select :category, ['Office Consumables', 'Utilities', 'Capital Goods', 'Facilities', 'Construction and Engineering', 'Metals and Minings'] %>
+	    </div>
+	 	<br>
+	 	<%= f.submit 'Create RFP', class: "btn btn-default" %>
+	</div> 		
+  <% end %>

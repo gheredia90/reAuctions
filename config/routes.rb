@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions" }
-  get 'profile', to: 'users#profile'   
+  get 'profile', to: 'users#show'   
   resources :users
+  resources :rfps, only: [:new, :create, :show, :edit, :destroy]
   root to: 'users#home'
-  get '/buyer_dashboard' => 'buyers#home'
-  get '/supplier_dashboard' => 'suppliers#home'
+  get '/dashboard' => 'users#home'
+ 
 end
 
 
-#            Prefix Verb   URI Pattern                    Controller#Action
+#                   Prefix Verb   URI Pattern                    Controller#Action
 #         new_user_session GET    /users/sign_in(.:format)       users/sessions#new
 #             user_session POST   /users/sign_in(.:format)       users/sessions#create
 #     destroy_user_session DELETE /users/sign_out(.:format)      users/sessions#destroy
@@ -33,4 +34,13 @@ end
 #                          PATCH  /users/:id(.:format)           users#update
 #                          PUT    /users/:id(.:format)           users#update
 #                          DELETE /users/:id(.:format)           users#destroy
+#                     rfps POST   /rfps(.:format)                rfps#create
+#                  new_rfp GET    /rfps/new(.:format)            rfps#new
+#                 edit_rfp GET    /rfps/:id/edit(.:format)       rfps#edit
+#                      rfp GET    /rfps/:id(.:format)            rfps#show
+#                          DELETE /rfps/:id(.:format)            rfps#destroy
 #                     root GET    /                              users#home
+#          buyer_dashboard GET    /buyer_dashboard(.:format)     buyers#home
+#       supplier_dashboard GET    /supplier_dashboard(.:format)  suppliers#home
+
+

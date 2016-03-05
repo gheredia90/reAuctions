@@ -4,9 +4,11 @@ class UsersController < ApplicationController
   
   def home
     if current_user.role == 'Buyer'
-      redirect_to buyer_dashboard_path
+      @my_rfps = current_user.rfps_as_buyer 
+      render 'buyer_dashboard'
     else
-      redirect_to supplier_dashboard_path
+      
+      render 'supplier_dashboard'
     end
   end
 
@@ -19,7 +21,7 @@ class UsersController < ApplicationController
   # # GET /users/1
   # # GET /users/1.json
   def show
- 
+    @user = current_user 
   end
  
   # GET /users/1/edit
@@ -27,11 +29,7 @@ class UsersController < ApplicationController
  
   end
 
-  def profile
-    @user = current_user
-    render 'users/profile'
-  end
- 
+  
   # # PATCH/PUT /users/1
   # # PATCH/PUT /users/1.json
   def update
