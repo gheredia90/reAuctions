@@ -2,14 +2,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions" }
   get 'profile', to: 'users#show'   
   resources :users
-  resources :rfps, only: [:new, :create, :show, :edit, :destroy]
+  resources :rfps, only: [:new, :create, :show, :edit, :update, :destroy]
   root to: 'users#home'
   get '/dashboard' => 'users#home'
- 
-end
-
-
-#                   Prefix Verb   URI Pattern                    Controller#Action
+ end
+#                  Prefix Verb   URI Pattern                    Controller#Action
 #         new_user_session GET    /users/sign_in(.:format)       users/sessions#new
 #             user_session POST   /users/sign_in(.:format)       users/sessions#create
 #     destroy_user_session DELETE /users/sign_out(.:format)      users/sessions#destroy
@@ -25,7 +22,7 @@ end
 #                          PATCH  /users(.:format)               users/registrations#update
 #                          PUT    /users(.:format)               users/registrations#update
 #                          DELETE /users(.:format)               users/registrations#destroy
-#                  profile GET    /profile(.:format)             users#profile
+#                  profile GET    /profile(.:format)             users#show
 #                    users GET    /users(.:format)               users#index
 #                          POST   /users(.:format)               users#create
 #                 new_user GET    /users/new(.:format)           users#new
@@ -38,9 +35,10 @@ end
 #                  new_rfp GET    /rfps/new(.:format)            rfps#new
 #                 edit_rfp GET    /rfps/:id/edit(.:format)       rfps#edit
 #                      rfp GET    /rfps/:id(.:format)            rfps#show
+#                          PATCH  /rfps/:id(.:format)            rfps#update
+#                          PUT    /rfps/:id(.:format)            rfps#update
 #                          DELETE /rfps/:id(.:format)            rfps#destroy
 #                     root GET    /                              users#home
-#          buyer_dashboard GET    /buyer_dashboard(.:format)     buyers#home
-#       supplier_dashboard GET    /supplier_dashboard(.:format)  suppliers#home
+#                dashboard GET    /dashboard(.:format)           users#home
 
 

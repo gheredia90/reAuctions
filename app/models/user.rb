@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
 
 
 	def rfps_as_supplier
-		Rfp.joins(:answers).where('answers.supplier_id' => self.id)
+		# Rfp.joins(:answers).where('answers.supplier_id' => self.id)
+		Rfp.where(category: self.category)
 	end
 
 end

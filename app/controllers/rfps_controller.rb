@@ -24,6 +24,18 @@ class RfpsController < ApplicationController
 	end
 
 	def edit
+		@rfp = Rfp.find params[:id]
+	end
+
+	def update
+		@rfp = Rfp.find params[:id]
+		if @rfp.update_attributes rfp_params
+			flash[:notice] = "Entry updated successfully"
+			redirect_to dashboard_path
+		else
+			flash.now[:errors] = @rfp.errors.full_messages
+			render 'edit'
+		end
 	end
 
     def rfp_params
