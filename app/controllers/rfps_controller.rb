@@ -1,6 +1,7 @@
 class RfpsController < ApplicationController
 
 	def show
+		@rfp = Rfp.find_by(params[:id])
 		if current_user.role == 'Buyer'
 	      render 'rfp_buyer_display'
 	    else

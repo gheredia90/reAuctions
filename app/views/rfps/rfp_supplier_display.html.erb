@@ -1,1 +1,15 @@
-rfp_supplier_display.html.erb
+<h2>RFP: <%= @rfp.title %></h2>
+
+<%= form_tag dashboard_path do %>
+  <% @rfp.questions.each do |question| %>
+    <%= fields_for 'answers[]', answer do |p| %>
+      <div class="field">
+        <%= p.label question.text %><br>
+        <%= p.text_field :text %>
+      </div>      
+    <% end %>
+  <% end %>
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
+<% end %>
