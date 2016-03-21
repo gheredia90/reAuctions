@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :rfps, only: [:new, :create, :show, :edit, :update, :destroy]
   root to: 'users#home'
   get '/dashboard' => 'users#home'
+  post '/rfps/:id/answers' => 'rfps#send_answers', as: :send_answers
+
  end
 #                  Prefix Verb   URI Pattern                    Controller#Action
 #         new_user_session GET    /users/sign_in(.:format)       users/sessions#new

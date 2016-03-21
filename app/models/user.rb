@@ -13,8 +13,14 @@ class User < ActiveRecord::Base
 
 
 	def rfps_as_supplier
-		# Rfp.joins(:answers).where('answers.supplier_id' => self.id)
+		Rfp.joins(:answers).where('answers.supplier_id' => self.id)
+	end
+
+	def rfps_available_as_supplier
 		Rfp.where(category: self.category)
 	end
 
+	def answers_sent?(rfp)
+		Answer.where("supplier_id = ? and rfp_id = ?", self.id, rfp.id).length != 0
+	end	
 end

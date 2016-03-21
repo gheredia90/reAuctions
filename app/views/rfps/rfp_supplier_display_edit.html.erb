@@ -1,0 +1,15 @@
+<h2>RFP: <%= @rfp.title %></h2>
+
+<%= form_tag send_answers_path(@rfp) do %>
+  <% @rfp.questions.each_with_index do |question, index| %>
+      <div class="field">
+        <%= label_tag question.text %><br>
+        <%= text_field_tag "answers[#{index}][text]" %>
+        <%= hidden_field_tag "answers[#{index}][question]", value=question.id %>
+        <%= hidden_field_tag "answers[#{index}][rfp]", value=@rfp.id %>
+      </div>      
+  <% end %>
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
+<% end %>

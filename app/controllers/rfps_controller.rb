@@ -39,6 +39,27 @@ class RfpsController < ApplicationController
 		end
 	end
 
+	def send_answers
+		params[:answers].each do |key, value|
+			@answer = Answer.new
+			@answer.question_id = value["question"].to_f
+			@answer.text = value["text"]
+			@answer.rfp_id = value["rfp"].to_f
+			@answer.supplier_id = current_user.id
+			@answer.save
+		end
+		redirect_to dashboard_path		
+	end
+
+	def update_answers
+		params[:answers].each do |key, value|
+			@answer = Answer.where(question_id: value["question"].to_f)			
+			@answer.text = value["text"]			
+			@answer.save
+		end
+		redirect_to dashboard_path		
+	end
+
     def rfp_params
 		params.require(:rfp).permit(:title, :description, :category)
 	end

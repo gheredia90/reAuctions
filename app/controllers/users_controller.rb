@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       @my_rfps = current_user.rfps_as_buyer 
       render 'buyer_dashboard'
     else
-      @available_rfps = current_user.rfps_as_supplier
+      @available_rfps = current_user.rfps_available_as_supplier
       render 'supplier_dashboard'
     end
   end

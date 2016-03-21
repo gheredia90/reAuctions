@@ -1,15 +1,18 @@
 <h2>RFP: <%= @rfp.title %></h2>
 
-<%= form_tag dashboard_path do %>
-  <% @rfp.questions.each do |question| %>
-    <%= fields_for 'answers[]', answer do |p| %>
+<%= form_tag send_answers_path(@rfp) do %>
+  <% @rfp.questions.each_with_index do |question, index| %>
       <div class="field">
-        <%= p.label question.text %><br>
-        <%= p.text_field :text %>
+        <%= label_tag question.text %><br>
+        <%= text_field_tag "answers[#{index}][text]", nil, :required => true %>
+        <%= hidden_field_tag "answers[#{index}][question]", value = question.id %>
+        <%= hidden_field_tag "answers[#{index}][rfp]", value = @rfp.id %>
       </div>      
-    <% end %>
   <% end %>
+  <br>
   <div class="actions">
-    <%= submit_tag %>
+    <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+    	Send answers
+  	<% end %>	
   </div>
 <% end %>
