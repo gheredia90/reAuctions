@@ -11,55 +11,45 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div id="wrapper">
-		<nav class="navbar navbar-default">
-	      <div class="container-fluid">   
-	        <div class="row">	        
-		        <div class="site-branding col-sm-4"></div>
-		        <div class="site-branding col-sm-4">
-		            <h2 class="site-title">reAuctions</h1>
-		        </div>
-		        <div class="site-branding col-sm-4">
-		        	
-						<div id="top_bar">
-							<% if user_signed_in? %>
-							  Logged in as <strong><%= current_user.email %></strong>.
-							  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-							  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-							<% else %>
-							  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-							  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-							<% end %>
-						</div> 
+	<nav class="navbar navbar-default navbar-fixed-top ">
+      <div class="container-fluid">   
+        <div class="row">	        
+	        <div class="site-branding col-sm-4"></div>
+	        <div class="site-branding col-sm-4">
+	            <h2 class="site-title">reAuctions</h1>
+	        </div>
+	        <div class="site-branding col-sm-4">
+	        	
+					<div id="top_bar">
+						<% if user_signed_in? %>
+						  Logged in as <strong><%= current_user.email %></strong>.
+						  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+						  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+						<% else %>
+						  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+						  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+						<% end %>
+					</div> 
 
-		        </div>              
-	        </div>   
-	      </div>
-	  	</nav>
+	        </div>              
+        </div>   
+      </div>
+	</nav>
+	<div id="wrapper">
+		
 
 	 	<div id="content">
 	 		<div class="col-sm-0.7 col-md-0.7 col-lg-0.7"></div>
-			<div class="col-sm-2 col-md-6 col-lg-4">
+			<div class="col-sm-6 col-md-6 col-lg-11">
 				<%= yield %>
 			</div>
 	 		
-	 	</div>  
-
-	  	<div id="box" class="navbar navbar-default navbar-fixed-bottom">
-			<h2>Ironhack</h2>
-			<p>Madrid, December 2015</p>
-	    </div>	
+	 	</div> 	  		
     </div>
 
-
-	
-	<br>
-	
-
-	<div id="box" class="navbar navbar-default navbar-fixed-bottom">
-			<h2>Ironhack</h2>
-			<p>Madrid, March 2015</p>
-	    </div>	
+    <div id="footer" class="navbar navbar-default navbar-fixed-bottom">
+			<h5>Ironhack, Madrid, March 2015</h5> 
+	</div>		
 	
 
 </body>

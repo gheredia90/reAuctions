@@ -14,7 +14,16 @@
 	    <div class="field">
 		    <%= f.label :category %><br>
 		    <%= f.select :category, ['Office Consumables', 'Utilities', 'Capital Goods', 'Facilities', 'Construction and Engineering', 'Metals and Minings'] %>
-	    </div>
+	    </div><br>
+	    <h4>Questions</h4>
+	    <ul style="list-style-type:circle">
+		    <% Question.all.each_with_index do |question, index| %>
+			    <div class="field">
+			       <li><%= label_tag question.text %> <%= check_box_tag("questions[#{question.id}]", question.id) %></li>
+			    </div>      
+			<% end %>	    
+	    </ul>
+	 	
 	 	<br>
 	 	<%= f.submit 'Save changes', class: "btn btn-default" %>
 	</div> 		
