@@ -16,4 +16,8 @@ class Rfp < ActiveRecord::Base
 			self.questions << question
 		end
 	end	
+
+	def get_suppliers
+		self.answers.map {|answer| answer.supplier}.uniq
+	end	
 end

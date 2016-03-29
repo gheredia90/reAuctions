@@ -1,11 +1,29 @@
-
-<h4><%= @rfp.title %></h4>
-<% @rfp.questions.each do |question| %>
-	<p><%= question.text %></p>
-	<ul>
-		<% question.get_answers(@rfp).each do |answer| %>
-			<li><%= answer.supplier.name %> : <%= answer.text %> </li> 
-		<% end %>	
-	</ul>
-	
-<% end %>	
+<div class="col-md-4">
+	<h4><%= @rfp.title %></h4>
+	<% @rfp.questions.each do |question| %>
+		<p><%= question.text %></p>
+		<ul>
+			<% question.get_answers(@rfp).each do |answer| %>
+				<li><%= answer.supplier.name %> : <%= answer.text %> </li> 
+			<% end %>	
+		</ul>
+		
+	<% end %>	
+</div>
+<div class="col-md-7">
+    <div class="jumbotron">
+    	<div class="container suppliers-for-auction">
+	    	Please select the Suppliers for the auction:
+	    	<%= form_tag(new_auction_path, :method=>'get', :multipart => true) do %>
+		    	<ul style="list-style-type:circle">
+			    <% @rfp.get_suppliers.each do |supplier| %>
+				    <div class="field">
+				        <li><%= label_tag supplier.name %> <%= check_box_tag("suppliers[#{supplier.id}]", supplier.id) %></li>
+				    </div>      
+				<% end %>	    
+		    	</ul>
+		    	<%= submit_tag 'Create auction with selected suppliers', class: "btn btn-default" %>
+		    <% end %>	
+	    </div>
+	</div>
+</div>

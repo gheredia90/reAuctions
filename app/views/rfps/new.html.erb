@@ -1,21 +1,24 @@
-<h2>Create new RFP</h2>
 
-<%= form_for(@rfp) do |f| %>
-
-	<div class="col-md-5 inline floatnone valign-t">
-	    <div class="field">
-		    <%= f.label :title %><br>
-		    <%= f.text_field :title %>
+<%= form_for(@rfp, :html => {:class => 'form-horizontal'}) do |f| %>
+	<fieldset>
+	<legend>Create new RFP</legend>
+    
+	<div class="col-md-4 inline floatnone valign-t">
+	    <div class="form-group">
+		   <%= f.label :title %><br>		   
+		   	<%= f.text_field :title, :class => "form-control" %>
 		</div>
-	    <div class="field">
+	    <div class="form-group">
 		    <%= f.label :description %><br>
 		    <%= f.text_area :description %>
 	    </div>
-	    <div class="field">
+	    <div class="form-group">
 		    <%= f.label :category %><br>
-		    <%= f.select :category, ['Office Consumables', 'Utilities', 'Capital Goods', 'Facilities', 'Construction and Engineering', 'Metals and Minings'] %>
+		    <%= f.select :category, ['Office Consumables', 'Utilities', 'Capital Goods', 'Facilities', 'Construction and Engineering', 'Metals and Minings'], {}, {class: 'form-control'} %>
 	    </div><br>
-	    <h4>Questions</h4>
+	</div>
+	<div class="col-md-8 inline floatnone valign-t">    
+	    <h5>Questions</h5>
 	    <ul style="list-style-type:circle">
 		    <% Question.all.each_with_index do |question, index| %>
 			    <div class="field">
@@ -26,5 +29,5 @@
 	 	<br>
 	 	<%= f.submit 'Create RFP', class: "btn btn-default" %>
 	</div> 
-
+	</fieldset>
   <% end %>

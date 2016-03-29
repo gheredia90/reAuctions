@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   get 'profile', to: 'users#show'   
   resources :users
   resources :rfps, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :auctions, only: [:new, :create, :show]
   root to: 'users#home'
   get '/dashboard' => 'users#home'
   post '/rfps/:id/answers' => 'rfps#send_answers', as: :send_answers
-  # get '/rfp_supplier_display/' => 'rfps#rfp_supplier_display'
-  # get '/rfp_buyer_display/' => 'rfps#rfp_buyer_display'
+  
  end
 #                  Prefix Verb   URI Pattern                    Controller#Action
 #         new_user_session GET    /users/sign_in(.:format)       users/sessions#new
@@ -41,8 +41,11 @@ Rails.application.routes.draw do
 #                          PATCH  /rfps/:id(.:format)            rfps#update
 #                          PUT    /rfps/:id(.:format)            rfps#update
 #                          DELETE /rfps/:id(.:format)            rfps#destroy
-#                     root GET    /                              users#home
-#                dashboard GET    /dashboard(.:format)           users#home
-# 			  send_answers POST   /rfps/:id/answers(.:format)    rfps#send_answers
-
+                      
+            #     auctions POST   /auctions(.:format)            auctions#create
+            #  new_auction GET    /auctions/new(.:format)        auctions#new
+            #      auction GET    /auctions/:id(.:format)        auctions#show
+            #         root GET    /                              users#home
+            #    dashboard GET    /dashboard(.:format)           users#home
+            # send_answers POST   /rfps/:id/answers(.:format)    rfps#send_answers
 

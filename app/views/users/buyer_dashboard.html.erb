@@ -1,19 +1,20 @@
-<h1>Buyer's main page</h1>
+<h4>My RFPs</h4>
+<div class="col-md-6">
+	<ul class="list-group">
+		<% @my_rfps.each do |rfp| %>
+			<li class="list-group-item"><%= rfp.title %>
+				<% if rfp.description.present? %> - <%= rfp.description %>
+				<% end %>			
+				<%= link_to raw('<span class="glyphicon glyphicon-pencil"></span>'), edit_rfp_path(rfp) %>
+				<%= link_to raw('<span class="glyphicon glyphicon-asterisk"></span>'), rfp_path(rfp.id) %>
+			</li>
+		<% end %>
+	</ul>
 
-<h2>My RFPs</h2>
-<ul class="list-group">
-	<% @my_rfps.each do |rfp| %>
-		<li class="list-group-item"><%= rfp.title %>
-			<% if rfp.description.present? %> - <%= rfp.description %>
-			<% end %>			
-			<%= link_to raw('<span class="glyphicon glyphicon-pencil"></span>'), edit_rfp_path(rfp) %>
-			<%= link_to raw('<span class="glyphicon glyphicon-asterisk"></span>'), rfp_path(rfp.id) %>
-		</li>
-	<% end %>
-</ul>
-
-<%= link_to raw('<button type="button" id="create-rfp" class="btn btn-default">Create RFP</button>'), new_rfp_path %>
-
-<h2>My Auctions</h2>
+	<%= link_to raw('<button type="button" id="create-rfp" class="btn btn-default">Create RFP</button>'), new_rfp_path %>
+</div>
+<div class="col-md-6">
+	<h4>My Auctions</h4>
+</div>	
 
 <button type="button" id="create-auction" class="btn btn-default">Create Auction</button>

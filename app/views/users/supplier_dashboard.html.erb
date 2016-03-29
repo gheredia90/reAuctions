@@ -1,15 +1,20 @@
-<h1>Supplier's main page</h1>
+<div class="col-md-6">
 
-<h2>Opened RFPs</h2>
-<ul class="list-group">
-	<% @available_rfps.each do |rfp| %>
-		<li class="list-group-item"><%= rfp.title %>
-			<% if rfp.description.present? %> - <%= rfp.description %>
-			<% end %>			
-			<%= link_to raw('<span class="glyphicon glyphicon-asterisk"></span>'), rfp_path(rfp) %>
-		</li>
-	<% end %>
-</ul>
 
-<h2>Opened Auctions</h2>
+	<h4>Opened RFPs</h4>
+	<ul class="list-group">
+		<% @available_rfps.each do |rfp| %>
+			<li class="list-group-item"><%= rfp.title %>
+				<% if rfp.description.present? %> - <%= rfp.description %>
+				<% end %>			
+				<%= link_to raw('<span class="glyphicon glyphicon-asterisk"></span>'), rfp_path(rfp) %>
+			</li>
+		<% end %>
+	</ul>
 
+</div>
+<div class="col-md-6">
+
+	<h2>Opened Auctions</h2>
+
+</div>
