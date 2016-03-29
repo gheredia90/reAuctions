@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   root to: 'users#home'
   get '/dashboard' => 'users#home'
   post '/rfps/:id/answers' => 'rfps#send_answers', as: :send_answers
-
+  # get '/rfp_supplier_display/' => 'rfps#rfp_supplier_display'
+  # get '/rfp_buyer_display/' => 'rfps#rfp_buyer_display'
  end
 #                  Prefix Verb   URI Pattern                    Controller#Action
 #         new_user_session GET    /users/sign_in(.:format)       users/sessions#new
@@ -42,5 +43,6 @@ Rails.application.routes.draw do
 #                          DELETE /rfps/:id(.:format)            rfps#destroy
 #                     root GET    /                              users#home
 #                dashboard GET    /dashboard(.:format)           users#home
+# 			  send_answers POST   /rfps/:id/answers(.:format)    rfps#send_answers
 
 

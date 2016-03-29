@@ -2,7 +2,9 @@ users = User.create([
   {name: 'Ian',  email: 'ian@dischord.com', password: "12345678", role: "Buyer"},
   {name: 'Henry',  email: 'hank@sst.com', password: "12345678", role: "Buyer"},
   {name: 'Glenn', email: 'danzig@plan9.com', password: "12345678", role: "Supplier", category: "Utilities"},
-  {name: 'H.R.', email: 'paul@reachoutinternational.com', password: "12345678", role: "Supplier", category: "Facilities"}
+  {name: 'H.R.', email: 'paul@reachoutinternational.com', password: "12345678", role: "Supplier", category: "Facilities"},
+  {name: 'Morgensen.', email: 'morgensen@reacal.com', password: "12345678", role: "Supplier", category: "Utilities"}
+
 ])
 
 q1 = Question.create text: '¿Cuál es la calidad del material?'

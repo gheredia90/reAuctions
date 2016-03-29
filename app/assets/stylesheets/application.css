@@ -40,4 +40,10 @@
     border-width: 0 0 1px;
     height: 32px;
     position: fixed;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.row{
+  margin-top:4px;
 }

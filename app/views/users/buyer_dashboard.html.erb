@@ -7,7 +7,7 @@
 			<% if rfp.description.present? %> - <%= rfp.description %>
 			<% end %>			
 			<%= link_to raw('<span class="glyphicon glyphicon-pencil"></span>'), edit_rfp_path(rfp) %>
-			<%= link_to raw('<span class="glyphicon glyphicon-asterisk"></span>'), rfp_path(rfp) %>
+			<%= link_to raw('<span class="glyphicon glyphicon-asterisk"></span>'), rfp_path(rfp.id) %>
 		</li>
 	<% end %>
 </ul>

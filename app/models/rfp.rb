@@ -3,10 +3,7 @@ class Rfp < ActiveRecord::Base
 	has_many :answers
 	belongs_to :buyer, class_name: "User"
 
-	def update_questions!(questions)
-		puts "----------------------------------------------------------------"
-		puts questions.size > 0
-		puts "----------------------------------------------------------------"
+	def update_questions!(questions)		
 		if questions.size > 0
 			questions.each_value {|value| self.add_question(value)}
 			self.save
@@ -14,10 +11,7 @@ class Rfp < ActiveRecord::Base
 	end	
 
 	def add_question(value)
-		question = Question.find_by_id(value)
-		puts "----------------------------------------------------------------"
-		puts question.in?(self.questions)
-		puts "----------------------------------------------------------------"
+		question = Question.find_by_id(value)		
 		unless question.in?(self.questions)
 			self.questions << question
 		end

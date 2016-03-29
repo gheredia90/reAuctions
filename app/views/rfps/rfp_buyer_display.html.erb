@@ -1,3 +1,11 @@
-rfp_buyer_display
 
-<%= @rfp.title %>
+<h4><%= @rfp.title %></h4>
+<% @rfp.questions.each do |question| %>
+	<p><%= question.text %></p>
+	<ul>
+		<% question.get_answers(@rfp).each do |answer| %>
+			<li><%= answer.supplier.name %> : <%= answer.text %> </li> 
+		<% end %>	
+	</ul>
+	
+<% end %>	
