@@ -1,15 +1,5 @@
 class RfpsController < ApplicationController
 
-	def show
-		@rfp = Rfp.find_by_id(params[:id])
-		
-		if current_user.role == 'Buyer'
-	      render 'rfp_buyer_display'
-	    else
-	      render 'rfp_supplier_display'
-	    end
-	end
-
 	def new
 		@rfp = Rfp.new		
 	end
@@ -26,6 +16,16 @@ class RfpsController < ApplicationController
 		end
 	end
 
+	def show
+		@rfp = Rfp.find_by_id(params[:id])
+		
+		if current_user.role == 'Buyer'
+	      render 'rfp_buyer_display'
+	    else
+	      render 'rfp_supplier_display'
+	    end
+	end
+
 	def edit
 		@rfp = Rfp.find params[:id]
 	end
@@ -34,7 +34,7 @@ class RfpsController < ApplicationController
 		@rfp = Rfp.find params[:id]
 		if @rfp.update_attributes rfp_params
 			@rfp.update_questions!(params[:questions])
-			flash[:notice] = "Entry updated successfully"
+			flash[:notice] = "RFP successfully updated"
 			redirect_to dashboard_path
 		else
 			flash.now[:errors] = @rfp.errors.full_messages
@@ -68,6 +68,7 @@ class RfpsController < ApplicationController
 		end
 	end
 
+	private
     def rfp_params
 		params.require(:rfp).permit(:title, :description, :category)
 	end

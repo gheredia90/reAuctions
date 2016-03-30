@@ -1,16 +1,27 @@
-<div class="col-md-4">
-	<h4><%= @rfp.title %></h4>
-	<% @rfp.questions.each do |question| %>
-		<p><%= question.text %></p>
-		<ul>
-			<% question.get_answers(@rfp).each do |answer| %>
-				<li><%= answer.supplier.name %> : <%= answer.text %> </li> 
-			<% end %>	
-		</ul>
-		
-	<% end %>	
-</div>
 <div class="col-md-7">
+	<h4><%= @rfp.title %></h4>
+	<table class="table table-striped table-hover ">
+  		<thead>
+    		<tr>
+    			<th>Supplier</th>
+    			<% @rfp.get_suppliers.each do |supplier| %>    				
+						<th><%= supplier.name %></th>					
+				<% end %>
+			</tr>
+        </thead>
+		<tbody>
+		<% @rfp.questions.each do |question| %>
+			<tr>
+				<td><%= question.text %></td>							
+				<% question.get_answers(@rfp).each do |answer| %>
+					<td><%= answer.text %> </td> 
+				<% end %>	
+			</tr>		
+		<% end %>			
+		</tbody>
+	</table> 		
+</div>
+<div class="col-md-3">
     <div class="jumbotron">
     	<div class="container suppliers-for-auction">
 	    	Please select the Suppliers for the auction:
@@ -22,7 +33,7 @@
 				    </div>      
 				<% end %>	    
 		    	</ul>
-		    	<%= submit_tag 'Create auction with selected suppliers', class: "btn btn-default" %>
+		    	<%= submit_tag 'Create auction', class: "btn btn-default" %>
 		    <% end %>	
 	    </div>
 	</div>

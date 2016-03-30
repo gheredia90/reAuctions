@@ -4,10 +4,12 @@ class UsersController < ApplicationController
   
   def home
     if current_user.role == 'Buyer'
-      @my_rfps = current_user.rfps_as_buyer 
+      @my_rfps = current_user.rfps_as_buyer
+      @my_auctions = current_user.auctions_as_buyer 
       render 'buyer_dashboard'
     else
       @available_rfps = current_user.rfps_available_as_supplier
+      @available_auctions = current_user.auctions_available_as_supplier
       render 'supplier_dashboard'
     end
   end

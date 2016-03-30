@@ -1,20 +1,13 @@
-<%= form_for(@rfp, :html => {:class => 'form-horizontal'}) do |f| %>
+<%= bootstrap_form_for(@rfp) do |f| %>
 	<fieldset>
 	<legend>Edit RFP</legend>
     
 	<div class="col-md-4 inline floatnone valign-t">
-	    <div class="form-group">
-		   <%= f.label :title %><br>		   
-		   	<%= f.text_field :title, :class => "form-control" %>
-		</div>
-	    <div class="form-group">
-		    <%= f.label :description %><br>
-		    <%= f.text_area :description %>
-	    </div>
-	    <div class="form-group">
-		    <%= f.label :category %><br>
-		    <%= f.select :category, ['Office Consumables', 'Utilities', 'Capital Goods', 'Facilities', 'Construction and Engineering', 'Metals and Minings'], {}, {class: 'form-control'} %>
-	    </div><br>
+	    		   
+		   	<%= f.text_field :title %>			   
+		    <%= f.text_area :description %>	    		    
+		    <%= f.select :category, ['Office Consumables', 'Utilities', 'Capital Goods', 'Facilities', 'Construction and Engineering', 'Metals and Minings'] %>
+	    
 	</div>
 	<div class="col-md-8 inline floatnone valign-t">    
 	    <h5>Questions</h5>
@@ -26,7 +19,7 @@
 			<% end %>	    
 	    </ul>
 	 	<br>
-	 	<%= f.submit 'Save changes', class: "btn btn-default" %>
+	 	<%= f.submit 'Save changes' %>
 	</div> 
 	</fieldset>
   <% end %>

@@ -1,1 +1,18 @@
-new.html.erb
+<%= bootstrap_form_for(@auction) do |f| %>
+	<fieldset>
+		<legend>Define Auction params</legend>	    
+		<div class="col-md-4 inline floatnone valign-t">   		    	   
+			   	<%= f.text_field :title %>		    
+			    <%= f.text_area :description %>
+			    <%= f.number_field :lowest_bid %>
+			    <% @suppliers.each_value do |value| %>
+			    	<%= hidden_field_tag "suppliers[#{value}]", value = value %>
+			    <% end %>	
+		    <br>
+		    <div class="form-group">
+		    	<%= f.submit 'Open Auction' %>
+		    </div>
+
+		</div>	
+	</fieldset>
+ <% end %>

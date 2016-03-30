@@ -15,6 +15,15 @@
 </div>
 <div class="col-md-6">
 
-	<h2>Opened Auctions</h2>
+	<h4>Opened Auctions</h2>
+	<ul class="list-group">
+		<% @available_auctions.each do |auction| %>
+			<li class="list-group-item"><%= auction.title %>
+				<% if auction.description.present? %> - <%= auction.description %>
+				<% end %>			
+				<%= link_to raw('<span class="glyphicon glyphicon-asterisk"></span>'), auction_path(auction) %>
+			</li>
+		<% end %>
+	</ul>
 
 </div>

@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
     has_many :answers, as: :supplier
     has_many :rfps
+    has_many :auctions, as: :buyer
+    has_and_belongs_to_many :auctions, as: :supplier
 
 	def rfps_as_buyer
 		Rfp.where(buyer_id: self.id)
@@ -18,6 +20,14 @@ class User < ActiveRecord::Base
 
 	def rfps_available_as_supplier
 		Rfp.where(category: self.category)
+	end
+
+	def auctions_as_buyer
+		Auction.where(buyer_id: self.id)
+	end
+
+	def auctions_available_as_supplier
+		Auction.joins(:suppliers).where('auctions_users.user_id' => self.id)
 	end
 
 	def answers_sent?(rfp)
