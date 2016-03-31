@@ -1,5 +1,9 @@
-<div class="col-md-4">
+Buyer<div class="col-md-4">
 	<h4><%= @auction.title %></h4>
+	<ul>
+	<% @auction.bids.each do |bid| %>
+		<li><%= bid.supplier.name%> : <%= bid.value %></li>
+  <% end %>
 	
 </div>
 <div class="col-md-7">

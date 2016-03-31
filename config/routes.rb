@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root to: 'users#home'
   get '/dashboard' => 'users#home'
   post '/rfps/:id/answers' => 'rfps#send_answers', as: :send_answers
+  post '/auctions/:id/bid' => 'auctions#send_bid', as: :send_bid
   
  end
 #                  Prefix Verb   URI Pattern                    Controller#Action

@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
     has_many :answers, as: :supplier
     has_many :rfps
     has_many :auctions, as: :buyer
+    has_many :bids, as: :supplier
     has_and_belongs_to_many :auctions, as: :supplier
 
 	def rfps_as_buyer

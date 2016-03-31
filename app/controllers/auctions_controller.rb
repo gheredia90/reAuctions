@@ -30,7 +30,15 @@ class AuctionsController < ApplicationController
 	    end
 	end
 
-	
+	def send_bid
+		@auction = Auction.find_by_id(params[:id])
+		@bid = Bid.new
+		@bid.value = params[:bid]
+		@bid.auction_id = @auction.id
+		@bid.supplier_id = current_user.id
+		@bid.save
+		redirect_to dashboard_path		
+	end
 
 	private
 	def auction_params

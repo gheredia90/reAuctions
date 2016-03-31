@@ -3,7 +3,8 @@ users = User.create([
   {name: 'Henry',  email: 'hank@sst.com', password: "12345678", role: "Buyer"},
   {name: 'Glenn', email: 'danzig@plan9.com', password: "12345678", role: "Supplier", category: "Utilities"},
   {name: 'H.R.', email: 'paul@reachoutinternational.com', password: "12345678", role: "Supplier", category: "Facilities"},
-  {name: 'Morgensen.', email: 'morgensen@reacal.com', password: "12345678", role: "Supplier", category: "Utilities"}
+  {name: 'Morgensen.', email: 'morgensen@reacal.com', password: "12345678", role: "Supplier", category: "Utilities"},
+  {name: 'Cupertino.', email: 'cupertino@reacal.com', password: "12345678", role: "Supplier", category: "Utilities"}
 
 ])
 
@@ -35,7 +36,15 @@ anwers = Answer.create([
   {text: 'Ninguna', question_id: 3, rfp_id: 2, supplier_id: 4},
   {text: '8000 euros', question_id: 4, rfp_id: 2, supplier_id: 4},
   {text: '100 unidades', question_id: 5, rfp_id: 2, supplier_id: 4},
-  {text: '2 años de asistencia técnica', question_id: 6, rfp_id: 2, supplier_id: 4}
+  {text: '2 años de asistencia técnica', question_id: 6, rfp_id: 2, supplier_id: 4},
+  {text: 'Alta', question_id: 1, rfp_id: 1, supplier_id: 5},
+  {text: '500 euros', question_id: 2, rfp_id: 1, supplier_id: 5},
+  {text: 'Ninguna', question_id: 3, rfp_id: 1, supplier_id: 5},
+  {text: '50000 euros', question_id: 4, rfp_id: 1, supplier_id: 5},
+  {text: 'Normal', question_id: 1, rfp_id: 1, supplier_id: 6},
+  {text: '340 euros', question_id: 2, rfp_id: 1, supplier_id: 6},
+  {text: 'Ninguna', question_id: 3, rfp_id: 1, supplier_id: 6},
+  {text: '30000 euros', question_id: 4, rfp_id: 1, supplier_id: 6}
 ])
 
 
