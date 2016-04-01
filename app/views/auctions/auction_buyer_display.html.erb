@@ -1,6 +1,6 @@
-Buyer<div class="col-md-4">
+<div class="col-md-4">
 	<h4><%= @auction.title %></h4>
-	<ul>
+	<ul id="bids-list">
 	<% @auction.bids.each do |bid| %>
 		<li><%= bid.supplier.name%> : <%= bid.value %></li>
   <% end %>
@@ -11,3 +11,24 @@ Buyer<div class="col-md-4">
     	
 	</div>
 </div>
+
+<script type="text/javascript">
+	var dataset = [ 12, 17, 18, 10,
+        24, 18, 25, 9, 3 ];
+	var sel = d3.select(".jumbotron").
+		selectAll("div").
+		data(dataset);
+	sel.enter().
+		append("div").
+		attr("class", "bar").
+		style("height", function(d) {
+				return d*5 + "px";
+ 		});	
+
+ // d3.select(".jumbotron").selectAll("p")
+	// .data(dataset)
+	// .enter()
+	// .append("p")
+	// .text("New paragraph!");	
+		
+</script>

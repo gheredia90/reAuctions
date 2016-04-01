@@ -23,11 +23,19 @@ class AuctionsController < ApplicationController
 	def show
 		@auction = Auction.find_by_id(params[:id])
 		
-		if current_user.role == 'Buyer'
-	      render 'auction_buyer_display'
-	    else
-	      render 'auction_supplier_display'
-	    end
+		respond_to do |format|
+			format.html do
+				if current_user.role == 'Buyer'
+	      			render 'auction_buyer_display'
+			    else
+			     	render 'auction_supplier_display'
+			    end
+			end
+			format.json do
+				render json: @auction.get_bids
+			end
+		end
+		
 	end
 
 	def send_bid

@@ -45,6 +45,19 @@
     margin-bottom: 5px;
 }
 
+.jumbotron{
+
+  padding-left: 14px;
+}
+
 .row{
   margin-top:4px;
+}
+
+div.bar {
+      display: inline-block;
+      width: 20px;
+      height: 75px;   /* Esto se cambiará próximamente */
+      background-color: teal;
+      margin-right: 2px;
 }
