@@ -1,16 +1,19 @@
 
-function getAuctionData(){
-	$.ajax({
-	    type: "GET",
-	    url: window.location.pathname,
-	    data: '',
-	    success: displayData,
-	    error: handleError,
-	    dataType: "json"
-	});
+function getAuctionData(){	
+		$.ajax({
+		    type: "GET",
+		    url: window.location.pathname,
+		    data: '',
+		    success: displayData,
+		    error: handleError,
+		    dataType: "json"
+		});
+		
 }
 
-window.setInterval(getAuctionData, 5000);
+if (window.location.pathname.includes("auctions/")){
+	window.setInterval(getAuctionData, 3000);
+}
 
 function displayData (response) {
     var dataset =  response;

@@ -6,4 +6,13 @@ class Question < ActiveRecord::Base
 		self.answers.where(rfp_id: rfp.id)
 	end	
 
+	def text_answer_for_rfp_and_user(rfp, user)
+		answer = self.answers.where(supplier_id: user.id, rfp_id: rfp.id).first
+		if answer.present?
+			answer.text
+		else
+			""
+		end
+	end	
+
 end

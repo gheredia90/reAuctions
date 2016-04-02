@@ -3,8 +3,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update] # probably want to keep using this
   
   def home
+    title = params[:title]
     if current_user.role == 'Buyer'
-      @my_rfps = current_user.rfps_as_buyer
+      @my_rfps = current_user.rfps_as_buyer(title)
       @my_auctions = current_user.auctions_as_buyer 
       render 'buyer_dashboard'
     else

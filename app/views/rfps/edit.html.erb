@@ -14,7 +14,9 @@
 	    <ul style="list-style-type:circle">
 		    <% Question.all.each_with_index do |question, index| %>
 			    <div class="field">
-			        <li><%= label_tag question.text %> <%= check_box_tag("questions[#{question.id}]", question.id) %></li>
+			        <li>
+			        <%= label_tag question.text %> 
+			        <%= check_box_tag("questions[#{question.id}]", question.id, @rfp.questions.include?(question)) %></li>
 			    </div>      
 			<% end %>	    
 	    </ul>

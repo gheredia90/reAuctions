@@ -4,7 +4,7 @@
   <% @rfp.questions.each_with_index do |question, index| %>
       <div class="field">
         <%= label_tag question.text %><br>
-        <%= text_field_tag "answers[#{index}][text]", nil, :required => true %>
+        <%= text_field_tag "answers[#{index}][text]", question.text_answer_for_rfp_and_user(@rfp, current_user), :required => true %>
         <%= hidden_field_tag "answers[#{index}][question]", value = question.id %>
         <%= hidden_field_tag "answers[#{index}][rfp]", value = @rfp.id %>
       </div>      

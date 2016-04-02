@@ -24,6 +24,32 @@ rfps = Rfp.create([
   {title: 'RFP - Ian - Metals', description: "Test RFP for Metals by Ian", category: 'Metals and Minings', buyer_id: 1},
   {title: 'RFP - Ian - Office Consumables', description: "Test RFP for Office Consumables by Ian", category: 'Office Consumables', buyer_id: 1},
   {title: 'RFP - Henry - Utilities', description: "Test RFP for Utilities by Henry", category: 'Utilities', buyer_id: 2},
+  {title: 'RFP - Casporem', description: "Test RFP for Metals by Ian", category: 'Metals and Minings', buyer_id: 1},
+  {title: 'RFP - Nutrecco', description: "Office Consumables order", category: 'Office Consumables', buyer_id: 1},
+  {title: 'RFP - AT&T - Utilities', description: "Telecom expense management", category: 'Utilities', buyer_id: 1},
+  {title: 'RFP - Metal Warriors', description: "Invoicing", category: 'Facilities', buyer_id: 1},
+  {title: 'RFP - Digital Labs', description: "Customer procurement services", category: 'Office Consumables', buyer_id: 1},
+  {title: 'RFP - Bell Labs', description: "Spend lifecycle management", category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  
+
 ])
 
 anwers = Answer.create([

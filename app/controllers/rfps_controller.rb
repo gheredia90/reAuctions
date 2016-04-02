@@ -33,7 +33,8 @@ class RfpsController < ApplicationController
 	def update
 		@rfp = Rfp.find params[:id]
 		if @rfp.update_attributes rfp_params
-			@rfp.update_questions!(params[:questions])
+			questions = params[:questions] || []
+			@rfp.update_questions!(questions)
 			flash[:notice] = "RFP successfully updated"
 			redirect_to dashboard_path
 		else

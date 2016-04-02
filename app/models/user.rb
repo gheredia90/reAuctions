@@ -10,8 +10,12 @@ class User < ActiveRecord::Base
     has_many :bids, as: :supplier
     has_and_belongs_to_many :auctions, as: :supplier
 
-	def rfps_as_buyer
-		Rfp.where(buyer_id: self.id)
+	def rfps_as_buyer(title)
+		if title
+			Rfp.where("buyer_id = ? and title LIKE ?", self.id, "%#{title}%")
+		else
+			Rfp.where(buyer_id: self.id)
+		end
 	end
 
 

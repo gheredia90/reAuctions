@@ -21,6 +21,8 @@
     flex-direction: column;
     flex-wrap: nowrap;
     padding-bottom: 30px;
+    margin-bottom: 40px;
+    margin-left: -40px;
 }
 #wrapper {
 	padding-top: 50px;
