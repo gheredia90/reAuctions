@@ -9,6 +9,8 @@ A user-friendly e-sourcing application, thought to optimize procurement processe
 * Stack: 
     * Ruby on Rails
     * Javascript
+    * Ruby on Rails
+    * Javascript
 	* D3.js
 	* jQuery
 
