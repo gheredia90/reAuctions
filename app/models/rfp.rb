@@ -5,6 +5,7 @@ class Rfp < ActiveRecord::Base
 
 	def update_questions!(questions)		
 		if questions.size > 0
+      self.questions = []
 			questions.each_value {|value| self.add_question(value)}
 			self.save
 		end
@@ -20,4 +21,5 @@ class Rfp < ActiveRecord::Base
 	def get_suppliers
 		self.answers.map {|answer| answer.supplier}.uniq
 	end	
+
 end

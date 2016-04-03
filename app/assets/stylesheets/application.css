@@ -14,6 +14,7 @@
  *= require_self
  *= require rails_bootstrap_forms
  */
+
 #content {
     width: 100%;
     height: 100%;
@@ -48,7 +49,6 @@
 }
 
 .jumbotron{
-
   padding-left: 14px;
 }
 
@@ -62,4 +62,24 @@ div.bar {
       height: 75px;   /* Esto se cambiará próximamente */
       background-color: teal;
       margin-right: 2px;
+}
+
+.pull-right{
+  margin-top: -5px;
+  margin-right: 5px;
+}
+
+.list-group-item{
+  vertical-align: middle;
+}
+
+.back {
+background: rgba(255,255,255,1);
+background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(245,245,245,1) 47%, rgba(237,237,237,1) 50%, rgba(237,237,237,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(245,245,245,1)), color-stop(50%, rgba(237,237,237,1)), color-stop(100%, rgba(237,237,237,1)));
+background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(245,245,245,1) 47%, rgba(237,237,237,1) 50%, rgba(237,237,237,1) 100%);
+background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(245,245,245,1) 47%, rgba(237,237,237,1) 50%, rgba(237,237,237,1) 100%);
+background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(245,245,245,1) 47%, rgba(237,237,237,1) 50%, rgba(237,237,237,1) 100%);
+background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(245,245,245,1) 47%, rgba(237,237,237,1) 50%, rgba(237,237,237,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );
 }

@@ -5,8 +5,8 @@
     
 	<div class="col-md-4 inline floatnone valign-t">	  
 		   		   
-		   	<%= f.text_field :title, :class => "form-control" %>		
-		    <%= f.text_area :description %>	    
+		   	<%= f.text_field :title, :class => "form-control",  :required => true %>		
+		    <%= f.text_area :description,  :required => true %>	    
 		    <%= f.select :category, ['Office Consumables', 'Utilities', 'Capital Goods', 'Facilities', 'Construction and Engineering', 'Metals and Minings'] %>
 	    <br>
 	</div>
@@ -21,6 +21,11 @@
 	    </ul>
 	 	<br>
 	 	<%= f.submit 'Create RFP', class: "btn btn-default" %>
+
+    <% if flash[:alert] %>
+        <h5><strong><%= flash[:alert] %></strong></h5>
+    <% end %>
+
 	</div> 
 	</fieldset>
   <% end %>

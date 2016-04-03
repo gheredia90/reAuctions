@@ -11,6 +11,7 @@ A user-friendly e-sourcing application, thought to optimize procurement processe
     * Javascript
     * D3.js
     * jQuery
+    * Bootstrap
 	
 
 <tt>rake doc:app</tt>.

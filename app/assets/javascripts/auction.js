@@ -1,5 +1,24 @@
 
+window.setInterval(getAuctionData, 3000);
+
+$(window).bind('page:change', function() {
+  updateBarsColors();
+});
+
+
+function updateBarsColors(){  
+  if (gon.role === "Supplier"){    
+    $(".change-element").css("background-color", "#149c82");
+    $("a.change-element").css("height", "-2px")
+    $(".change-element").css("color", "#F8F8F8");
+  } else {
+    $(".navbar-fixed-top").addClass("back");
+    $("#footer").addClass("back");
+  }
+}
+
 function getAuctionData(){	
+  if (window.location.pathname.includes("auctions/")){
 		$.ajax({
 		    type: "GET",
 		    url: window.location.pathname,
@@ -8,11 +27,7 @@ function getAuctionData(){
 		    error: handleError,
 		    dataType: "json"
 		});
-		
-}
-
-if (window.location.pathname.includes("auctions/")){
-	window.setInterval(getAuctionData, 3000);
+	}	
 }
 
 function displayData (response) {

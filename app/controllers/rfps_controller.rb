@@ -5,14 +5,17 @@ class RfpsController < ApplicationController
 	end
 
 	def create
-		@rfp = Rfp.new rfp_params
-		@rfp.buyer = current_user
-		params[:questions].each_value {|value| @rfp.questions << Question.find_by_id(value)} 
-		if @rfp.save
-			flash[:notice] = "RFP successfully created"
+		@rfp = Rfp.new rfp_params			
+		if !params[:questions].nil?
+      params[:questions].each_value {|value| @rfp.questions << Question.find_by_id(value)}
+      @rfp.buyer = current_user 
+      puts @rfp
+      @rfp.save
+      flash[:alert] = ""
 			redirect_to dashboard_path			
 		else
-			render 'new'
+      flash[:alert] = "Select at least one question"
+			redirect_to new_rfp_path
 		end
 	end
 
@@ -32,13 +35,12 @@ class RfpsController < ApplicationController
 
 	def update
 		@rfp = Rfp.find params[:id]
-		if @rfp.update_attributes rfp_params
-			questions = params[:questions] || []
-			@rfp.update_questions!(questions)
-			flash[:notice] = "RFP successfully updated"
+		if @rfp.update_attributes(rfp_params) && !params[:questions].nil?
+			@rfp.update_questions!(params[:questions])
+      flash[:alert] = ""
 			redirect_to dashboard_path
 		else
-			flash.now[:errors] = @rfp.errors.full_messages
+      flash[:alert] = "Select at least one question"
 			render 'edit'
 		end
 	end
@@ -52,25 +54,34 @@ class RfpsController < ApplicationController
 
 	def create_answers
 		params[:answers].each do |key, value|
-			@answer = Answer.new
-			@answer.question_id = value["question"].to_f
-			@answer.text = value["text"]
-			@answer.rfp_id = value["rfp"].to_f
-			@answer.supplier_id = current_user.id
-			@answer.save
+      add_answer(value["question"].to_f, value["text"], value["rfp"].to_f, current_user.id)			
 		end
 	end	
 
+  def add_answer(question_id, text, rfp_id, supplier_id)
+    @answer = Answer.new
+    @answer.question_id = question_id
+    @answer.text = text
+    @answer.rfp_id = rfp_id
+    @answer.supplier_id = supplier_id
+    @answer.save
+  end  
+
 	def update_answers
+    @rfp = Rfp.find_by_id(params[:id])
 		params[:answers].each do |key, value|
-			@answer = Answer.where("supplier_id = ? and rfp_id = ? and question_id = ?", current_user.id, value["rfp"].to_f, value["question"].to_f)[0]
-			@answer.text= value["text"]		
-			@answer.save
-		end
+			@answer = Answer.where("supplier_id = ? and rfp_id = ? and question_id = ?", current_user.id, value["rfp"].to_f, value["question"].to_f).first
+      if @rfp.answers.include?(@answer)
+        @answer.text = value["text"]   
+        @answer.save
+      else  
+        add_answer(value["question"].to_f, value["text"], value["rfp"].to_f, current_user.id) 			   
+		  end
+    end  
 	end
 
 	private
-    def rfp_params
+  def rfp_params
 		params.require(:rfp).permit(:title, :description, :category)
 	end
 

@@ -37,17 +37,7 @@ rfps = Rfp.create([
   {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
   {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
   {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
+  
   
 
 ])

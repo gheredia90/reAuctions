@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Reauctions</title>
+  <%= include_gon %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js">    </script>
@@ -11,7 +12,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top ">
+	<nav class="navbar navbar-default navbar-fixed-top change-element">
 
       <div class="container-fluid">   
       <div class="navbar-header">
@@ -21,24 +22,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">reAuctions</a>
+      <a class="navbar-brand change-element" href="/"><strong>reAuctions</strong></a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Dashboard <span class="sr-only">(current)</span></a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
+        <li class="active"><a class="change-element" href="/">Dashboard <span class="sr-only">(current)</span></a></li>
+        
       </ul>
       <form class="navbar-form navbar-left" role="search" action= "#" method= 'get'>
         <div class="form-group">
@@ -48,12 +38,12 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
       	<% if user_signed_in? %>
-				<li> <a href="#">Welcome, <strong><%= current_user.name %></strong></a></li>
-				<li> <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> </li>
-				<li> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'%></li>
+				<li> <a class="change-element" href="#">Welcome, <strong><%= current_user.name %></strong></a></li>
+				<li> <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link change-element' %> </li>
+				<li> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link change-element '%></li>
 		<% else %>
-				<li> <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %></li>
-				<li> <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+				<li> <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link change-element' %></li>
+				<li> <%= link_to "Login", new_user_session_path, :class => 'navbar-link change-element'  %></li>
 		<% end %>
       </ul>
     </div>
@@ -68,7 +58,7 @@
 	 		<div class="row"> </div>
 		 	<div class="row">
 		 		<div class="col-sm-1"></div>
-				<div class="col-sm-9 ">
+				<div class="col-sm-10 ">
 					<%= yield %>
 				</div>
 		 		
@@ -76,7 +66,7 @@
 	 	</div>   		
     </div>
 
-    <div id="footer" class="navbar navbar-default navbar-fixed-bottom">
+    <div id="footer" class="navbar navbar-default navbar-fixed-bottom change-element">
 			<h5>Ironhack, Madrid, March 2015</h5> 
 	</div>		
 	

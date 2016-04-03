@@ -16,3 +16,13 @@
 //= require d3.v3
 //= require turbolinks
 //= require_tree .
+
+
+$(document).ready(updateBarsColors);
+$(document).load(updateBarsColors);
+$(window).load = function(){
+  updateBarsColors();
+}
+$(window).bind("load", function() { 
+    updateBarsColors();
+});

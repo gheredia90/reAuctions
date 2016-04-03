@@ -23,8 +23,13 @@ class User < ActiveRecord::Base
 		Rfp.joins(:answers).where('answers.supplier_id' => self.id)
 	end
 
-	def rfps_available_as_supplier
-		Rfp.where(category: self.category)
+	def rfps_available_as_supplier(title)
+		if title
+			Rfp.where("category = ? and title LIKE ?", self.category, "%#{title}%")
+		else
+			Rfp.where(category: self.category)
+		end
+		
 	end
 
 	def auctions_as_buyer

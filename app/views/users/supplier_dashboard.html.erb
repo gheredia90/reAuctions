@@ -7,7 +7,7 @@
 			<li class="list-group-item"><%= rfp.title %>
 				<% if rfp.description.present? %> - <%= rfp.description %>
 				<% end %>			
-				<%= link_to raw('<span class="glyphicon glyphicon-asterisk"></span>'), rfp_path(rfp) %>
+				<%= link_to raw('<button type="button" class="btn btn-sm pull-right"><span class="glyphicon glyphicon-asterisk"></span> Open</button>'), rfp_path(rfp) %>
 			</li>
 		<% end %>
 	</ul>
@@ -21,7 +21,7 @@
 			<li class="list-group-item"><%= auction.title %>
 				<% if auction.description.present? %> - <%= auction.description %>
 				<% end %>			
-				<%= link_to raw('<span class="glyphicon glyphicon-asterisk"></span>'), auction_path(auction) %>
+				<%= link_to raw('<button type="button" class="btn btn-sm pull-right"><span class="glyphicon glyphicon-asterisk"></span> Open</button>'), auction_path(auction) %>
 			</li>
 		<% end %>
 	</ul>
