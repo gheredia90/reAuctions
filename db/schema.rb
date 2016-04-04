@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20160331171009) do
     t.string  "title"
     t.string  "description"
     t.string  "category"
+    t.boolean "opened"
   end
 
   create_table "users", force: :cascade do |t|

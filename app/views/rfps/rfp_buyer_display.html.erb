@@ -18,12 +18,19 @@
     		    <% @rfp.questions.each do |question| %> 				    
     					<td><%= question.text_answer_for_rfp_and_user(@rfp, supplier) %> </td> 
     				<% end %>
-            <td> <%= check_box_tag("suppliers[#{supplier.id}]", supplier.id) %> </td> 	
+            <td> 
+              <% if @rfp.opened %>
+                <%= check_box_tag("suppliers[#{supplier.id}]", supplier.id) %> 
+                <%= hidden_field_tag "rfp_id", value = @rfp.id %>                                
+              <% end %>  
+            </td> 	
 
       			</tr>		
         <% end %>		
     		</tbody>
-    	</table> 	
-      <%= submit_tag 'Create auction', class: "btn btn-default" %>
+    	</table> 
+      <% if @rfp.opened %>	
+        <%= submit_tag 'Create auction', class: "btn btn-default" %>
+      <% end %>   
   <% end %> 	
 </div>

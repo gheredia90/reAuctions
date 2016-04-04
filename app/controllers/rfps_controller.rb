@@ -9,7 +9,7 @@ class RfpsController < ApplicationController
 		if !params[:questions].nil?
       params[:questions].each_value {|value| @rfp.questions << Question.find_by_id(value)}
       @rfp.buyer = current_user 
-      puts @rfp
+      @rfp.opened = true
       @rfp.save
       flash[:alert] = ""
 			redirect_to dashboard_path			
@@ -21,7 +21,7 @@ class RfpsController < ApplicationController
 
 	def show
 		@rfp = Rfp.find_by_id(params[:id])
-		
+    gon.role = current_user.role		
 		if current_user.role == 'Buyer'
 	      render 'rfp_buyer_display'
 	    else

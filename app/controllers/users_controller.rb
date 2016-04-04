@@ -10,8 +10,8 @@ class UsersController < ApplicationController
       @my_auctions = current_user.auctions_as_buyer 
       render 'buyer_dashboard'
     else
-      @available_rfps = current_user.rfps_available_as_supplier(title)
-      @available_auctions = current_user.auctions_available_as_supplier
+      @my_rfps = current_user.rfps_available_as_supplier(title)
+       @my_auctions = current_user.auctions_available_as_supplier
       render 'supplier_dashboard'
     end
   end

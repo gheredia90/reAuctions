@@ -6,6 +6,7 @@ class CreateRfPs < ActiveRecord::Migration
     	t.string :title
     	t.string :description
     	t.string :category
+      t.boolean :opened
 
     end
   end

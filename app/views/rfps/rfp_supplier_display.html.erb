@@ -4,15 +4,20 @@
   <% @rfp.questions.each_with_index do |question, index| %>
       <div class="field">
         <%= label_tag question.text %><br>
-        <%= text_field_tag "answers[#{index}][text]", question.text_answer_for_rfp_and_user(@rfp, current_user), :required => true %>
+
+        <% if @rfp.opened %>
+          <%= text_field_tag "answers[#{index}][text]", question.text_answer_for_rfp_and_user(@rfp, current_user), :required => true %>
+        <% else %>
+           <%= text_field_tag "answers[#{index}][text]", question.text_answer_for_rfp_and_user(@rfp, current_user), :required => true, :readonly => true %>
+        <% end %> 
         <%= hidden_field_tag "answers[#{index}][question]", value = question.id %>
         <%= hidden_field_tag "answers[#{index}][rfp]", value = @rfp.id %>
       </div>      
   <% end %>
   <br>
   <div class="actions">
-    <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
-    	Send answers
-  	<% end %>	
+    <% if @rfp.opened %>
+      <%= button_tag(type: 'submit', class: "btn btn-primary") do %>Send answers<% end %>	
+    <% end %>   
   </div>
 <% end %>

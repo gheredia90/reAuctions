@@ -13,33 +13,22 @@ q2 = Question.create text: 'Precio por unidad:'
 q3 = Question.create text: 'Posibles ofertas a aplicar'
 q4 = Question.create text: 'Precio mínimo del lote:'
 q5 = Question.create text: 'Tamaño mínimo del lote (n.unidades):'
-q6 = Question.create text: 'Servicios adicionales que podrían incluirse en el contrato:'
+q6 = Question.create text: 'Servicios adicionales a incluir:'
 
-r1 = Rfp.create title: 'RFP - Ian - Utilities', description: "Test RFP for Utilities by Ian", category: 'Utilities', buyer_id: 1
+r1 = Rfp.create title: 'RFP - Ian - Utilities', description: "Test RFP for Utilities by Ian", category: 'Utilities', buyer_id: 1, opened: true
 r1.questions.push(q1, q2, q3, q4)
-r2 = Rfp.create title: 'RFP - Henry - Facilities', description: "Test RFP for Facilities by Henry", category: 'Henry', buyer_id: 2
+r2 = Rfp.create title: 'RFP - Henry - Facilities', description: "Test RFP for Facilities by Henry", category: 'Utilities', buyer_id: 1, opened: false
 r2.questions.push(q1, q2, q3, q4, q5, q6)
 
 rfps = Rfp.create([
-  {title: 'RFP - Ian - Metals', description: "Test RFP for Metals by Ian", category: 'Metals and Minings', buyer_id: 1},
-  {title: 'RFP - Ian - Office Consumables', description: "Test RFP for Office Consumables by Ian", category: 'Office Consumables', buyer_id: 1},
-  {title: 'RFP - Henry - Utilities', description: "Test RFP for Utilities by Henry", category: 'Utilities', buyer_id: 2},
-  {title: 'RFP - Casporem', description: "Test RFP for Metals by Ian", category: 'Metals and Minings', buyer_id: 1},
-  {title: 'RFP - Nutrecco', description: "Office Consumables order", category: 'Office Consumables', buyer_id: 1},
-  {title: 'RFP - AT&T - Utilities', description: "Telecom expense management", category: 'Utilities', buyer_id: 1},
-  {title: 'RFP - Metal Warriors', description: "Invoicing", category: 'Facilities', buyer_id: 1},
-  {title: 'RFP - Digital Labs', description: "Customer procurement services", category: 'Office Consumables', buyer_id: 1},
-  {title: 'RFP - Bell Labs', description: "Spend lifecycle management", category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  {title: Faker::Company.name, description: Faker::Commerce.product_name, category: 'Construction and Engineering', buyer_id: 1},
-  
-  
-
+  {title: 'RFP - Ian - Metals', description: "Test RFP for Metals by Ian", category: 'Metals and Minings', buyer_id: 1, opened: true},
+  {title: 'RFP - Ian - Office Consumables', description: "Test RFP for Office Consumables by Ian", category: 'Office Consumables', buyer_id: 1, opened: true},
+  {title: 'RFP - Casporem', description: "Test RFP for Metals by Ian", category: 'Metals and Minings', buyer_id: 1, opened: true},
+  {title: 'RFP - Nutrecco', description: "Office Consumables order", category: 'Office Consumables', buyer_id: 1, opened: true},
+  {title: 'RFP - AT&T - Utilities', description: "Telecom expense management", category: 'Utilities', buyer_id: 1, opened: true},
+  {title: 'RFP - Metal Warriors', description: "Invoicing", category: 'Facilities', buyer_id: 1, opened: true},
+  {title: 'RFP - Digital Labs', description: "Customer procurement services", category: 'Utilities', buyer_id: 1, opened: false},
+  {title: 'RFP - Bell Labs', description: "Spend lifecycle management", category: 'Construction and Engineering', buyer_id: 1, opened: false}
 ])
 
 anwers = Answer.create([

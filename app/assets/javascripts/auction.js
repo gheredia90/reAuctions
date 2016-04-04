@@ -18,7 +18,10 @@ function updateBarsColors(){
 }
 
 function getAuctionData(){	
-  if (window.location.pathname.includes("auctions/")){
+  var url = window.location.pathname;
+  var lastSegment = url.split('/').pop();
+  var matches = lastSegment.match(/\d+/g);
+  if (url.includes("auctions/") && matches != null){
 		$.ajax({
 		    type: "GET",
 		    url: window.location.pathname,
@@ -32,19 +35,16 @@ function getAuctionData(){
 
 function displayData (response) {
     var dataset =  response;
-    console.log(dataset)
     $('.jumbotron').empty();
-    var sel = d3.select(".jumbotron").
-		selectAll("div").
-		data(dataset);
-	sel.enter().
-		append("div").
-		attr("class", "bar").
-		style("height", function(d) {
-				return d*5 + "px";
- 		});	
-    
-    $("bids-list").append("<li>hola</li>")
+    var sel = d3.select(".jumbotron.all-bids").
+  		selectAll("div").
+  		data(dataset);
+	  sel.enter().
+  		append("div").
+  		attr("class", "bar").
+  		style("height", function(d) {
+  				return d*5 + "px";
+   		});    
 }
 
 function handleError (error) {

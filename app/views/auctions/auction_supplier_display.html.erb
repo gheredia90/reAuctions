@@ -5,49 +5,21 @@
 	  	
 	      <div class="field">
 	        <%= f.number_field :bid %>	        
-	      </div>      
+	      </div> 
+                  
 	  <br>
 	  <div class="actions">
-	    <%= f.submit "Send new bid"%>	    
+    <span>
+	    <%= f.submit "Send new bid"%>
+      <button class="btn btn-default pull-right lowest-bid" type="button">
+          Lowest_bid <span class="badge"><%= @auction.lowest_bid %></span>
+      </button> 	   </span> 
 	  </div>
 	<% end %>
 	
 </div>
 <div class="col-md-7">
-    <div class="jumbotron">    	
+    <div class="jumbotron my-bids"> 
+      	
 	</div>
 </div>
-
-<script type="text/javascript">
-
-		// var dataset = [ 5, 10, 15, 20, 25 ];	
-		// d3.select("body").selectAll("p")
-		// 	.data(dataset)
-		// 	.enter()
-		// 	.append("p")
-		// 	.text(function(d) { 
-		// 		return "I can count up to " + d; 
-		// 	})
-		// 	.style("color", function(d) {
-		//         if (d > 15) {   //Umbral - 15
-		//             return "red";
-		//         } else {
-		//     		return "black";
-		//         }
-		//     });
-
-		// var dataset = [ 25, 15, 5, 26, 11, 8, 25, 14, 23, 19,
-  //           14, 11, 22, 29, 11, 13, 12, 17, 18, 10,
-  //           24, 18, 25, 9, 3 ];
-		// d3.select("body").selectAll("div")
-		// 	.data(dataset)
-		// 	.enter()
-		// 	.append("div")
-		// 	.attr("class", "bar")
-		// 	.style("height", function(d) {
-  //   			return d*5 + "px";
-  //    		 });
-
-			
-		
-    </script>

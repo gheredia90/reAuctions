@@ -8,6 +8,7 @@
 			    <% @suppliers.each_value do |value| %>
 			    	<%= hidden_field_tag "suppliers[#{value}]", value = value %>
 			    <% end %>	
+          <%= hidden_field_tag "rfp_id", value = @rfp_id %>
 		    <br>
 		    <div class="form-group">
 		    	<%= f.submit 'Open Auction' %>

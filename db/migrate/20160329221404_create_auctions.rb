@@ -7,6 +7,8 @@ class CreateAuctions < ActiveRecord::Migration
     	t.string :description
     	t.boolean :opened
     	t.integer :lowest_bid
+      t.boolean :opened
+      
     	t.timestamps null: false
     end
   end
