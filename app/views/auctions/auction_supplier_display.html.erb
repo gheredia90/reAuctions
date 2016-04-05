@@ -3,17 +3,24 @@
 
 	<%= bootstrap_form_tag url: send_bid_path(@auction) do |f| %>
 	  	
-	      <div class="field">
-	        <%= f.number_field :bid %>	        
-	      </div> 
+	      
                   
 	  <br>
 	  <div class="actions">
-      
-        	<%= f.submit "Send new bid"%>        
-          <button class="btn btn-default pull-right lowest-bid" type="button">
-              Lowest_bid <span class="badge"><%= @auction.lowest_bid %></span>
-          </button>
+          <% if @auction.opened %>
+            <div class="field">
+              <%= f.number_field :bid %>          
+            </div> 
+          	 <%= f.submit "Send new bid"%> 
+             <button class="btn btn-default pull-right lowest-bid" type="button">Lowest bid <span class="badge"><%= @auction.lowest_bid %></span>
+            </button>  
+          <% else %>    
+            <% if @auction.has_bids? %>
+              <button class="btn btn-default btn-lg" type="button"> Lowest bid:  <span class="badge"><%= @auction.lowest_bid %></span></button>
+              <button class="btn btn-default btn-lg" type="button"> Supplier:   <span class="badge"><%= @auction.get_lowest_bid_supplier.name %></span></button>
+            <% end %>
+          <% end %>      
+          
         
 	  </div>
 	<% end %>

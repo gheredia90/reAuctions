@@ -31,3 +31,7 @@ $(window).bind("load", function() {
 $(window).bind('page:change', function() {
   updateBuyerColors();
 });
+
+$(function() {
+    updateBuyerColors();
+});

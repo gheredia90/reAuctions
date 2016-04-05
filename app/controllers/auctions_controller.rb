@@ -11,7 +11,7 @@ class AuctionsController < ApplicationController
 		@auction = Auction.new auction_params
 		@auction.buyer = current_user
 		@auction.opened = true
-    @auction.lowest_bid = 0
+    @auction.lowest_bid = 1000
     @auction.start_date = Time.now
     @auction.end_date = @auction.start_date + (@auction.duration).minutes   
 		params[:suppliers].each_value {|value| @auction.suppliers << User.find_by_id(value)}
@@ -30,7 +30,8 @@ class AuctionsController < ApplicationController
     
     gon.push({
       :start_date => @auction.get_start_date_ms,
-      :end_date => @auction.get_end_date_ms
+      :end_date => @auction.get_end_date_ms,
+      :role => current_user.role
     })
 		respond_to do |format|
 			format.html do

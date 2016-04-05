@@ -35,7 +35,7 @@ class Auction < ActiveRecord::Base
   end 
 
   def sort_bids
-     self.bids.sort { |a,b| a.value <=> b.value } 
+     self.bids.sort { |a,b| a <=> b } 
   end  
   
   def get_start_date_ms

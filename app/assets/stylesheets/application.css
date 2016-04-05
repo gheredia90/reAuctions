@@ -79,8 +79,12 @@ div.bar {
 }
 
 .auction-results{
- margin-top: 39px;
-  
+ margin-top: 39px;  
+}
+
+.alert{
+  margin-top: 55px;
+  width: 319px;
 }
 
 .back {

@@ -1,10 +1,10 @@
 
-
 var lastSegment = window.location.pathname.split('/').pop();
 var matches = lastSegment.match(/\d+/g);
 
 window.setInterval(getAuctionData, 1000);
 window.setInterval(checkAuctionTime, 1000);
+window.setInterval(updateBuyerColors, 1000);
 
 function checkAuctionTime(){
   if (window.location.pathname.includes("auctions/") && (matches != null)){
@@ -19,7 +19,7 @@ function checkAuctionTime(){
           type: "POST",
           url: "/auctions/" + lastSegment
         });
-      $("#countdown").html("<h3>Time left</h3>");
+      $("#countdown").html('<div class="alert alert-success" role="alert">Auction finished!</div>');
     }
   }
 }
