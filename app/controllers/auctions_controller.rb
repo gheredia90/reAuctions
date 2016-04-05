@@ -2,8 +2,6 @@ class AuctionsController < ApplicationController
 
 
 	def new	
-      gon.role = current_user.role
-
 		@auction = Auction.new		
 		@suppliers = params[:suppliers]	
     @rfp_id = params[:rfp_id]
@@ -13,6 +11,9 @@ class AuctionsController < ApplicationController
 		@auction = Auction.new auction_params
 		@auction.buyer = current_user
 		@auction.opened = true
+    @auction.lowest_bid = 0
+    @auction.start_date = Time.now
+    @auction.end_date = @auction.start_date + (@auction.duration).minutes   
 		params[:suppliers].each_value {|value| @auction.suppliers << User.find_by_id(value)}
 		if @auction.save
       @rfp = Rfp.find_by_id(params[:rfp_id])
@@ -26,7 +27,11 @@ class AuctionsController < ApplicationController
 
 	def show
 		@auction = Auction.find_by_id(params[:id])
-		gon.role = current_user.role
+    
+    gon.push({
+      :start_date => @auction.get_start_date_ms,
+      :end_date => @auction.get_end_date_ms
+    })
 		respond_to do |format|
 			format.html do
 				if current_user.role == 'Buyer'
@@ -38,8 +43,7 @@ class AuctionsController < ApplicationController
 			format.json do
 				render json: @auction.get_bids
 			end
-		end
-		
+		end		
 	end
 
 	def send_bid
@@ -54,9 +58,16 @@ class AuctionsController < ApplicationController
 		redirect_to auction_path		
 	end
 
+  def close_auction
+    @auction = Auction.find_by_id(params[:id])
+    @auction.opened = false
+    @auction.save
+    redirect_to dashboard_path
+  end  
+
   private
 	def auction_params
-		params.require(:auction).permit(:title, :description, :lowest_bid)
+		params.require(:auction).permit(:title, :description, :duration)
 	end
 
 end

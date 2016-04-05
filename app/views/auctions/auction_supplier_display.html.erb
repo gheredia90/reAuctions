@@ -9,17 +9,16 @@
                   
 	  <br>
 	  <div class="actions">
-    <span>
-	    <%= f.submit "Send new bid"%>
-      <button class="btn btn-default pull-right lowest-bid" type="button">
-          Lowest_bid <span class="badge"><%= @auction.lowest_bid %></span>
-      </button> 	   </span> 
+      
+        	<%= f.submit "Send new bid"%>        
+          <button class="btn btn-default pull-right lowest-bid" type="button">
+              Lowest_bid <span class="badge"><%= @auction.lowest_bid %></span>
+          </button>
+        
 	  </div>
 	<% end %>
 	
 </div>
 <div class="col-md-7">
-    <div class="jumbotron my-bids"> 
-      	
-	</div>
+    <div id="countdown"></div>
 </div>

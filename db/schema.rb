@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331171009) do
+ActiveRecord::Schema.define(version: 20160404225357) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "question_id"
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 20160331171009) do
     t.integer  "lowest_bid"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "duration"
   end
 
   create_table "auctions_users", force: :cascade do |t|

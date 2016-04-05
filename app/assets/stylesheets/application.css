@@ -74,6 +74,12 @@ div.bar {
 }
 
 .lowest-bid{
+  margin-top: 0.5px;
+  margin-bottom: -1.5px;
+}
+
+.auction-results{
+ margin-top: 39px;
   
 }
 

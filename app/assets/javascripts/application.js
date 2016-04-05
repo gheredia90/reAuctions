@@ -18,11 +18,16 @@
 //= require_tree .
 
 
-$(document).ready(updateBarsColors);
-$(document).load(updateBarsColors);
-$(window).load = function(){
-  updateBarsColors();
+$(document).ready(updateBuyerColors);
+$(document).load(updateBuyerColors);
+
+$(window).load = function(){ 
+  updateBuyerColors();
 }
-$(window).bind("load", function() { 
-    updateBarsColors();
+$(window).bind("load", function() {   
+    updateBuyerColors();
+});
+
+$(window).bind('page:change', function() {
+  updateBuyerColors();
 });

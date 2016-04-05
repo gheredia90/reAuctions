@@ -1,10 +1,10 @@
-<h4>My Opened Auctions</h4>
+<h4>My Closed Auctions</h4>
   <ul class="list-group">
-  <% opened_auctions = @my_auctions.select{ |auction| auction.opened == true } %>
-    <% opened_auctions.each do |auction| %>
+    <% closed_auctions = @my_auctions.select{ |auction| auction.opened == false } %>
+    <% closed_auctions.each do |auction| %>
       <li class="list-group-item"><%= auction.title %>
         <% if auction.description.present? %> - <%= auction.description %>
-        <% end %>     
+        <% end %>
         <%= link_to raw('<button type="button" class="btn btn-sm pull-right"><span class="glyphicon glyphicon-asterisk"></span> Open</button>'), auction_path(auction.id) %>
       </li>
     <% end %>

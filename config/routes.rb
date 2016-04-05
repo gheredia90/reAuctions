@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/dashboard' => 'users#home'
   post '/rfps/:id/answers' => 'rfps#send_answers', as: :send_answers
   post '/auctions/:id/bid' => 'auctions#send_bid', as: :send_bid
+  post '/auctions/:id/' => 'auctions#close_auction', as: :close_auction
   
  end
 #                  Prefix Verb   URI Pattern                    Controller#Action

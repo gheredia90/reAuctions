@@ -1,13 +1,15 @@
-<div class="col-md-4">
-	<h4><%= @auction.title %></h4>
-	<ul id="bids-list">
-	<% @auction.bids.each do |bid| %>
-		<li><%= bid.supplier.name%> : <%= bid.value %></li>
-  <% end %>
-	
+<div class="col-md-9">
+<h4><%= @auction.title %></h4>
+  <div class="jumbotron all-bids"></div>	
 </div>
-<div class="col-md-7">
-    <div class="jumbotron all-bids">
-    	
-	</div>
+<div class="col-md-3"> 
+<div class="row auction-results">  </div> 
+    <div class="jumbotron">
+    <div id="countdown"></div>
+    <% if @auction.has_bids? %>
+      <h4>Lowest bid: <%= @auction.lowest_bid %></h4>
+      <h4>Supplier: <%= @auction.get_lowest_bid_supplier.name %></h4>
+    <% end %>  
+    </div>
 </div>
+
