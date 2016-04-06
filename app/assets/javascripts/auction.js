@@ -11,17 +11,26 @@ function checkAuctionTime(){
     currentTime = new Date().getTime();
     msLeft = gon.end_date - currentTime;
     if (msLeft > 0){
-      minLeft = Math.floor((msLeft / 1000)/60);
-      segLeft = Math.floor((msLeft / 1000)%60);
-      $("#countdown").html("<h3>"+ minLeft + " minutes and " + segLeft + " seconds</h3>");
+      updateTime(msLeft);
     } else {
-        $.ajax({
-          type: "POST",
-          url: "/auctions/" + lastSegment
-        });
-      $("#countdown").html('<div class="alert alert-success" role="alert">Auction finished!</div>');
+      closeAuction();
     }
   }
+}
+
+function updateTime(msLeft){
+  minLeft = Math.floor((msLeft / 1000)/60);
+  segLeft = Math.floor((msLeft / 1000)%60);
+  $("#countdown").html("<h3>"+ minLeft + " minutes and " + segLeft + " seconds</h3>");
+}
+
+function closeAuction(){
+  $.ajax({
+    type: "POST",
+    url: "/auctions/" + lastSegment
+  });
+  $("#countdown").html('<div class="alert alert-success" role="alert">Auction finished!</div>');
+  $("#bid-options").empty();
 }
 
 function getAuctionData(){  
@@ -42,8 +51,16 @@ function handleError (error) {
 }
 
 function displayData (response) {
-    var dataset =  response;
+    var dataset =  response.bids;
     $('.jumbotron.all-bids').empty();
+    $('#results').html(
+      '<button class="btn btn-default btn-lg" type="button"> Lowest bid:  <span class="badge">' + response.lowest_bid + '</span></button>' +
+       '<button class="btn btn-default btn-lg" type="button"> Supplier:   <span class="badge">' + response.supplier + '</span></button>'
+    );
+    $('#info').html(
+      'Lowest bid:  <span class="badge">' + response.lowest_bid + '</span></button>'
+    );     
+    
     var sel = d3.select(".jumbotron.all-bids").
   		selectAll("div").
   		data(dataset);
@@ -68,4 +85,12 @@ function updateBuyerColors(){
 
 $(window).bind('page:change', function() {
   updateBuyerColors();
+});
+
+$(window).bind('page:change', function() {
+  getAuctionData();
+});
+
+$(function() {
+    updateBuyerColors();
 });

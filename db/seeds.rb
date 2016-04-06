@@ -17,7 +17,7 @@ q6 = Question.create text: 'Servicios adicionales a incluir:'
 
 r1 = Rfp.create title: 'RFP - Ian - Utilities', description: "Test RFP for Utilities by Ian", category: 'Utilities', buyer_id: 1, opened: true
 r1.questions.push(q1, q2, q3, q4)
-r2 = Rfp.create title: 'RFP - Henry - Facilities', description: "Test RFP for Facilities by Henry", category: 'Utilities', buyer_id: 1, opened: false
+r2 = Rfp.create title: 'RFP - Henry - Facilities', description: "Test RFP for Facilities by Henry", category: 'Utilities', buyer_id: 1, opened: true
 r2.questions.push(q1, q2, q3, q4, q5, q6)
 
 rfps = Rfp.create([

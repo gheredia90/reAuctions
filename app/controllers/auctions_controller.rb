@@ -19,7 +19,7 @@ class AuctionsController < ApplicationController
       @rfp = Rfp.find_by_id(params[:rfp_id])
       @rfp.opened = false
       @rfp.save
-			redirect_to dashboard_path			
+			redirect_to auction_path(@auction)			
 		else
 			render 'new'
 		end
@@ -36,13 +36,18 @@ class AuctionsController < ApplicationController
 		respond_to do |format|
 			format.html do
 				if current_user.role == 'Buyer'
-	      		render 'auction_buyer_display'
-			    else
-			     	render 'auction_supplier_display'
-			    end
+      		render 'auction_buyer_display'
+		    else
+		     	render 'auction_supplier_display'
+		    end
 			end
 			format.json do
-				render json: @auction.get_bids
+        render :json => {
+          :bids => @auction.get_bids,
+          :lowest_bid => @auction.lowest_bid,
+          :supplier => @auction.get_lowest_bid_supplier.name,
+          :opened => @auction.opened
+        }
 			end
 		end		
 	end

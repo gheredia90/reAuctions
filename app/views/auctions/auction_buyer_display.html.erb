@@ -1,13 +1,15 @@
-<div class="col-md-9">
+<div class="col-md-8">
 <h4><%= @auction.title %></h4>
   <div class="jumbotron all-bids"></div>	
 </div>
-<div class="col-md-3"> 
+<div class="col-md-4"> 
 <div class="row auction-results">  </div> 
     <div id="countdown"></div>
-    <% if @auction.has_bids? %>
-      <button class="btn btn-default btn-lg" type="button"> Lowest bid:  <span class="badge"><%= @auction.lowest_bid %></span></button>
-      <button class="btn btn-default btn-lg" type="button"> Supplier:   <span class="badge"><%= @auction.get_lowest_bid_supplier.name %></span></button>
-    <% end %>  
+    <div id="results">
+      <% if @auction.has_bids? %>
+        <button class="btn btn-default btn-lg" type="button"> Lowest bid:  <span class="badge"><%= @auction.lowest_bid %></span></button>
+        <button class="btn btn-default btn-lg" type="button"> Supplier:   <span class="badge"><%= @auction.get_lowest_bid_supplier.name %></span></button>
+      <% end %>  
+    </div>  
 </div>
 

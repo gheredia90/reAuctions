@@ -20,9 +20,13 @@
 
 $(document).ready(updateBuyerColors);
 $(document).load(updateBuyerColors);
+$(document).load(getAuctionData);
 
 $(window).load = function(){ 
   updateBuyerColors();
+}
+$(window).load = function(){ 
+  getAuctionData();
 }
 $(window).bind("load", function() {   
     updateBuyerColors();
@@ -32,6 +36,4 @@ $(window).bind('page:change', function() {
   updateBuyerColors();
 });
 
-$(function() {
-    updateBuyerColors();
-});
+
