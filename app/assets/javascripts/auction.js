@@ -75,8 +75,9 @@ function diplayBidsData(response){
   supplier = response.supplier;  
 }
 
-function displayBarChart(dataset, names){
-  d3.select(".jumbotron.all-bids")
+function displayBarChart(dataset, names){ 
+  
+  var svg = d3.select(".jumbotron.all-bids")
     .selectAll("div")
     .data(dataset)
     .enter()
@@ -85,13 +86,23 @@ function displayBarChart(dataset, names){
     .style("background-color", stringToHexNumber)
     .style("height", function(d) {
       return d.value*8 + "px";
+    }) 
+    .on("mouseover", function(d) {
+      $("#tip").empty()
+      $("#tip").addClass("alert alert-info");
+      $("#tip").html(d.name + ': ' + d. value );
     })
+    .on("mouseout", function(d) {
+      $("#tip").empty();
+      $("#tip").removeClass("alert alert-info");
+    });  
 }
+
 
 function stringToHexNumber(d){
   var stringHexNumber = (parseInt(parseInt(d.name, 36)  
-      .toExponential()                  
-      .slice(2,-5)                      
+    .toExponential()                  
+    .slice(2,-5)                      
   , 10) & 0xFFFFFF                          
   ).toString(16).toUpperCase();
   return '#' + ('000000' + stringHexNumber).slice(-6);
