@@ -12,12 +12,9 @@
         <button class="btn btn-default pull-right lowest-bid" id="info" type="button">Lowest bid <span class="badge"><%= @auction.lowest_bid %></span>
         </button>
     </div> 
-    <% else %>             
-        <% if @auction.has_bids? && !@auction.opened %>
-          <button class="btn btn-default btn-lg" type="button"> Lowest bid:  <span class="badge"><%= @auction.lowest_bid %></span></button>
-          <button class="btn btn-default btn-lg" type="button"> Supplier:   <span class="badge"><%= @auction.get_lowest_bid_supplier.name %></span></button>
-        <% end %>            
-    <% end %>      
+              
+    <% end %>   
+    <div id="results-supplier"> </div>  
   
 	<% end %>
 	

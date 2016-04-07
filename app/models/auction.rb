@@ -4,10 +4,22 @@ class Auction < ActiveRecord::Base
 	has_many :bids
 	has_and_belongs_to_many :suppliers, class_name: "User"
 
+  def set_data(user)
+    self.buyer = user
+    self.opened = true
+    self.lowest_bid = 1000
+    self.start_date = Time.now
+    self.end_date = self.start_date + (self.duration).minutes 
+  end 
+
 	def get_bids
 		self.bids.map { |bid| bid.value }
 	end
-	
+
+  def get_bidders
+    self.bids.map{|bid| User.find_by_id(bid.supplier_id).name}
+	end
+
 	def get_minimum_bid
 		self.get_bids.min
 	end
@@ -33,6 +45,10 @@ class Auction < ActiveRecord::Base
     bids = self.bids.select{|bid| bid.supplier_id == supplier.id}
     bids.map { |bid| bid.value }
   end 
+
+  def get_bids_and_names
+    self.bids.map{|bid| {:value => bid.value, :name => bid.get_supplier_name} }
+  end
 
   def sort_bids
      self.bids.sort { |a,b| a <=> b } 

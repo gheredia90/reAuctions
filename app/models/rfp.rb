@@ -3,6 +3,12 @@ class Rfp < ActiveRecord::Base
 	has_many :answers
 	belongs_to :buyer, class_name: "User"
 
+  def set_data(current_user)
+    self.buyer = current_user 
+    self.opened = true
+    self.save
+  end  
+
 	def update_questions!(questions)		
 		if questions.size > 0
       self.questions = []

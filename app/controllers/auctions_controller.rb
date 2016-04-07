@@ -9,11 +9,7 @@ class AuctionsController < ApplicationController
 
 	def create
 		@auction = Auction.new auction_params
-		@auction.buyer = current_user
-		@auction.opened = true
-    @auction.lowest_bid = 1000
-    @auction.start_date = Time.now
-    @auction.end_date = @auction.start_date + (@auction.duration).minutes   
+		@auction.set_data(current_user) 
 		params[:suppliers].each_value {|value| @auction.suppliers << User.find_by_id(value)}
 		if @auction.save
       @rfp = Rfp.find_by_id(params[:rfp_id])
@@ -46,7 +42,9 @@ class AuctionsController < ApplicationController
           :bids => @auction.get_bids,
           :lowest_bid => @auction.lowest_bid,
           :supplier => @auction.get_lowest_bid_supplier.name,
-          :opened => @auction.opened
+          :names => @auction.get_bidders,
+          :opened => @auction.opened,
+          :dataset => @auction.get_bids_and_names
         }
 			end
 		end		
@@ -55,10 +53,7 @@ class AuctionsController < ApplicationController
 	def send_bid
 		@auction = Auction.find_by_id(params[:id])
 		@bid = Bid.new
-		@bid.value = params[:bid]
-    @bid.auction_id = @auction.id
-		@bid.supplier_id = current_user.id
-		@bid.save
+    @bid.set_data(params[:bid], @auction.id, current_user.id)		
     @auction.set_lowest_bid 
     @auction.save
 		redirect_to auction_path		

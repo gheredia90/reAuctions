@@ -7,10 +7,8 @@ class RfpsController < ApplicationController
 	def create
 		@rfp = Rfp.new rfp_params			
 		if !params[:questions].nil?
-      params[:questions].each_value {|value| @rfp.questions << Question.find_by_id(value)}
-      @rfp.buyer = current_user 
-      @rfp.opened = true
-      @rfp.save
+      params[:questions].each_value {|value| @rfp.questions << Question.find_by_id(value)}     
+      @rfp.set_data(current_user)
       flash[:alert] = ""
 			redirect_to dashboard_path			
 		else
@@ -60,10 +58,7 @@ class RfpsController < ApplicationController
 
   def add_answer(question_id, text, rfp_id, supplier_id)
     @answer = Answer.new
-    @answer.question_id = question_id
-    @answer.text = text
-    @answer.rfp_id = rfp_id
-    @answer.supplier_id = supplier_id
+    @answer.set_data(question_id, text, rfp_id, supplier_id)
     @answer.save
   end  
 
