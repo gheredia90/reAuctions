@@ -1,14 +1,14 @@
 class User < ActiveRecord::Base
 	# Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
-    devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable,
+       :recoverable, :rememberable, :trackable, :validatable
 
-    has_many :answers, as: :supplier
-    has_many :rfps
-    has_many :auctions, as: :buyer
-    has_many :bids, as: :supplier
-    has_and_belongs_to_many :auctions, as: :supplier
+  has_many :answers, as: :supplier
+  has_many :rfps
+  has_many :auctions, as: :buyer
+  has_many :bids, as: :supplier
+  has_and_belongs_to_many :auctions, as: :supplier
 
 	def rfps_as_buyer(title)
 		if title

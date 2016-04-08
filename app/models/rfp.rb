@@ -19,9 +19,7 @@ class Rfp < ActiveRecord::Base
 
 	def add_question(value)
 		question = Question.find_by_id(value)		
-		unless question.in?(self.questions)
-			self.questions << question
-		end
+		self.questions << question unless question.in?(self.questions)
 	end	
 
 	def get_suppliers

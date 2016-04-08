@@ -15,27 +15,18 @@ class UsersController < ApplicationController
       render 'supplier_dashboard'
     end
   end
-
-  # GET /users
-  # GET /users.json
+  
   def index
     @users = User.all
-  end
- 
-  # # GET /users/1
-  # # GET /users/1.json
+  end 
+  
   def show
     @user = current_user 
-  end
- 
-  # GET /users/1/edit
-  def edit
- 
-  end
-
+  end 
   
-  # # PATCH/PUT /users/1
-  # # PATCH/PUT /users/1.json
+  def edit 
+  end  
+ 
   def update
     respond_to do |format|
       if @user.update(user_params)
@@ -49,14 +40,14 @@ class UsersController < ApplicationController
   end
  
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
- 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:role, :user_name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find_by_id(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:role, :category, :user_name)
+  end
  
 end

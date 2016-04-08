@@ -8,14 +8,14 @@ class AuctionsController < ApplicationController
 	end	
 
 	def create
-		@auction = Auction.new auction_params
-		@auction.set_data(current_user) 
-		params[:suppliers].each_value {|value| @auction.suppliers << User.find_by_id(value)}
-		if @auction.save
-      @rfp = Rfp.find_by_id(params[:rfp_id])
-      @rfp.opened = false
-      @rfp.save
-			redirect_to auction_path(@auction)			
+		auction = Auction.new auction_params
+		auction.set_data(current_user) 
+		params[:suppliers].each_value {|value| auction.suppliers << User.find_by_id(value)}
+		if auction.save
+      rfp = Rfp.find_by_id(params[:rfp_id])
+      rfp.opened = false
+      rfp.save
+			redirect_to auction_path(auction)			
 		else
 			render 'new'
 		end
@@ -51,18 +51,18 @@ class AuctionsController < ApplicationController
 	end
 
 	def send_bid
-		@auction = Auction.find_by_id(params[:id])
-		@bid = Bid.new
-    @bid.set_data(params[:bid], @auction.id, current_user.id)		
-    @auction.set_lowest_bid 
-    @auction.save
+		auction = Auction.find_by_id(params[:id])
+		bid = Bid.new
+    bid.set_data(params[:bid], auction.id, current_user.id)		
+    auction.set_lowest_bid 
+    auction.save
 		redirect_to auction_path		
 	end
 
   def close_auction
-    @auction = Auction.find_by_id(params[:id])
-    @auction.opened = false
-    @auction.save
+    auction = Auction.find_by_id(params[:id])
+    auction.opened = false
+    auction.save
     redirect_to dashboard_path
   end  
 

@@ -34,7 +34,7 @@ function closeAuction(){
   $("#bid-options").empty();
   $('#results-supplier').html(
       '<button class="btn btn-default btn-lg" type="button"> Lowest bid:  <span class="badge">' + lowest_bid + '</span></button>' +
-       '<button class="btn btn-default btn-lg" type="button"> Supplier:   <span class="badge">' + supplier + '</span></button>'
+      '<button class="btn btn-default btn-lg" type="button"> Supplier:   <span class="badge">' + supplier + '</span></button>'
   );
 }
 
@@ -119,6 +119,25 @@ function updateBuyerColors(){
   }
 }
 
+
+
+$(document).ready(updateBuyerColors);
+$(document).load(updateBuyerColors);
+$(document).load(getAuctionData);
+
+$(window).load = function(){ 
+  updateBuyerColors();
+}
+$(window).load = function(){ 
+  getAuctionData();
+}
+$(window).bind("load", function() {   
+    updateBuyerColors();
+});
+
+$(window).bind('page:change', function() {
+  updateBuyerColors();
+});
 $(window).bind('page:change', function() {
   updateBuyerColors();
 });
@@ -128,5 +147,5 @@ $(window).bind('page:change', function() {
 });
 
 $(function() {
-    updateBuyerColors();
+  updateBuyerColors();
 });

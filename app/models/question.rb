@@ -8,11 +8,7 @@ class Question < ActiveRecord::Base
 
 	def text_answer_for_rfp_and_user(rfp, user)
 		answer = self.answers.where(supplier_id: user.id, rfp_id: rfp.id).first
-		if answer.present?
-			answer.text
-		else
-			""
-		end
+		answer.present? ? answer.text : ""
 	end	
 
 end

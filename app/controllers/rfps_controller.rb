@@ -5,10 +5,10 @@ class RfpsController < ApplicationController
 	end
 
 	def create
-		@rfp = Rfp.new rfp_params			
+		rfp = Rfp.new rfp_params			
 		if !params[:questions].nil?
-      params[:questions].each_value {|value| @rfp.questions << Question.find_by_id(value)}     
-      @rfp.set_data(current_user)
+      params[:questions].each_value {|value| rfp.questions << Question.find_by_id(value)}     
+      rfp.set_data(current_user)
       flash[:alert] = ""
 			redirect_to dashboard_path			
 		else
@@ -45,8 +45,8 @@ class RfpsController < ApplicationController
 		
 
 	def send_answers
-		@rfp = Rfp.find_by_id(params[:id])
-		current_user.answers_sent?(@rfp) ? update_answers : create_answers
+		rfp = Rfp.find_by_id(params[:id])
+		current_user.answers_sent?(rfp) ? update_answers : create_answers
 		redirect_to dashboard_path		
 	end
 
@@ -57,18 +57,18 @@ class RfpsController < ApplicationController
 	end	
 
   def add_answer(question_id, text, rfp_id, supplier_id)
-    @answer = Answer.new
-    @answer.set_data(question_id, text, rfp_id, supplier_id)
-    @answer.save
+    answer = Answer.new
+    answer.set_data(question_id, text, rfp_id, supplier_id)
+    answer.save
   end  
 
 	def update_answers
-    @rfp = Rfp.find_by_id(params[:id])
+    rfp = Rfp.find_by_id(params[:id])
 		params[:answers].each do |key, value|
-			@answer = Answer.where("supplier_id = ? and rfp_id = ? and question_id = ?", current_user.id, value["rfp"].to_f, value["question"].to_f).first
-      if @rfp.answers.include?(@answer)
-        @answer.text = value["text"]   
-        @answer.save
+			answer = Answer.where("supplier_id = ? and rfp_id = ? and question_id = ?", current_user.id, value["rfp"].to_f, value["question"].to_f).first
+      if rfp.answers.include?(answer)
+        answer.text = value["text"]   
+        answer.save
       else  
         add_answer(value["question"].to_f, value["text"], value["rfp"].to_f, current_user.id) 			   
 		  end

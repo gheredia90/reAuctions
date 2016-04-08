@@ -1,7 +1,7 @@
 class Answer < ActiveRecord::Base
-	belongs_to :question
-	belongs_to :rfp
-	belongs_to :supplier, class_name: "User"
+  belongs_to :question
+  belongs_to :rfp
+  belongs_to :supplier, class_name: "User"
 
 
   def set_data(question_id, text, rfp_id, supplier_id)
