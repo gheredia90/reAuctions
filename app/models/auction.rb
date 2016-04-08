@@ -1,8 +1,8 @@
 class Auction < ActiveRecord::Base
-	
-	belongs_to :buyer, class_name: "User"
-	has_many :bids
-	has_and_belongs_to_many :suppliers, class_name: "User"
+  
+  belongs_to :buyer, class_name: "User"
+  has_many :bids
+  has_and_belongs_to_many :suppliers, class_name: "User"
 
   def set_data(user)
     self.buyer = user
@@ -12,17 +12,17 @@ class Auction < ActiveRecord::Base
     self.end_date = self.start_date + (self.duration).minutes 
   end 
 
-	def get_bids
-		self.bids.map { |bid| bid.value }
-	end
+  def get_bids
+    self.bids.map { |bid| bid.value }
+  end
 
   def get_bidders
     self.bids.map{|bid| User.find_by_id(bid.supplier_id).name}
-	end
+  end
 
-	def get_minimum_bid
-		self.get_bids.min
-	end
+  def get_minimum_bid
+    self.get_bids.min
+  end
 
   def set_lowest_bid
     self.lowest_bid = self.get_minimum_bid
@@ -33,9 +33,9 @@ class Auction < ActiveRecord::Base
     User.find_by_id(supplier_id)
   end  
 
-	def add_bid(bid)
-		self.bids << bid
-	end	
+  def add_bid(bid)
+    self.bids << bid
+  end 
 
   def has_bids?
     self.bids.length > 0
